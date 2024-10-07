@@ -1,29 +1,94 @@
-Project Title:
-Smart Home Automation Using ATmega32, LCD, Temperature Sensor, LDR Sensor, Flame Sensor and Motor Control
+Smart Home Automation Using ATmega32, LCD, Temperature Sensor, LDR Sensor, Flame Sensor, and Motor Control
+Project Overview
+This project implements a smart home automation system that automates lighting, fan speed, and fire detection using sensors and a microcontroller. The system is designed to adjust the lighting and fan speed based on environmental conditions such as room temperature and ambient light, while also providing fire detection and real-time feedback via an LCD.
 
-Objective:
-To design and implement a smart home system that automates the control of lighting and fan speed based on environmental conditions. The project uses an ATmega32 microcontroller, LM35 temperature sensor, LDR (Light Dependent Resistor), Flame sensor, and a PWM-controlled motor. An LCD provides real-time display, and an H-bridge circuit controls the fan motor. Additionally, LEDs indicate varying light intensity levels.
+Objectives
+The primary objectives of this project are:
 
-Overview:
-This project involves developing a smart home system that adjusts lighting, fan speed, and safety alerts based on environmental conditions:
+Lighting Control: Adjust LED lighting based on ambient light intensity using an LDR.
+Fan Speed Control: Control the fan speed using PWM based on room temperature measured by the LM35 temperature sensor.
+Fire Detection: Trigger a fire alarm and alert when the flame sensor detects fire.
+Real-Time Feedback: Display system status, temperature, and light intensity on a 16x2 LCD.
+Features
+1. Automatic Lighting Control
+The LDR sensor monitors light intensity and adjusts three LEDs based on the following thresholds:
 
-Lighting Control: The LDR detects ambient light intensity and controls three LEDs to indicate different levels of light.
-Fan Speed Control: The LM35 temperature sensor adjusts the fan speed proportionally to the room temperature.
-Fire Detection: A flame sensor detects fire, triggers an alarm, and displays a critical alert on the LCD.
-LCD Display: Shows real-time temperature readings, fan status, light intensity, and alerts.
-Hardware Components:
-• Microcontroller: ATmega32
+< 15%: All LEDs (Red, Green, and Blue) turn ON.
+16% - 50%: Red and Green LEDs turn ON.
+51% - 70%: Only Red LED turns ON.
+> 70%: All LEDs turn OFF.
+2. Automatic Fan Speed Control
+The fan speed is adjusted based on the temperature readings from the LM35 sensor using PWM:
 
-• Light Sensor: LDR
+≥ 40°C: Fan ON at 100% speed.
+35°C ≤ Temp < 40°C: Fan ON at 75% speed.
+30°C ≤ Temp < 35°C: Fan ON at 50% speed.
+25°C ≤ Temp < 30°C: Fan ON at 25% speed.
+< 25°C: Fan OFF.
+3. Fire Detection and Alert
+The flame sensor detects fire and triggers a "Critical Alert!" message on the LCD.
+The buzzer is activated to provide an audible alert.
+The system remains in alert mode until the flame is no longer detected.
+4. Real-Time LCD Display
+The 16x2 LCD provides real-time feedback on the system status:
 
-• Temperature Sensor: LM35
+First Row: Displays "FAN is ON" or "FAN is OFF" depending on the fan status.
+Second Row: Displays the temperature (Temp= xxC) and light intensity (LDR= xxx%).
+Hardware Components
+Microcontroller: ATmega32
+Temperature Sensor: LM35 (connected to ADC Channel 1)
+Light Sensor: LDR (connected to ADC Channel 0)
+Display: 16x2 LCD (in 8-bit mode)
+Motor: Controlled via H-Bridge (PWM-based speed control)
+Flame Sensor: Connected to detect fire
+Buzzer: Used for fire alerts
+LEDs: Red, Green, Blue for light intensity indication
+Pin Configuration
+Component	Pin Configuration
+LCD	RS: PD0, Enable: PD1, Data: PORTC (8-bit mode)
+LDR	PA0 (ADC Channel 0)
+LM35	PA1 (ADC Channel 1)
+Motor Control	IN1: PB0, IN2: PB1, Enable1: PB3/OC0
+Flame Sensor	PD2
+Buzzer	PD3
+Red LED	PB5
+Green LED	PB6
+Blue LED	PB7
+System Requirements
+Microcontroller: ATmega32
+System Frequency: 16 MHz
+Drivers Overview
+The project utilizes the following drivers for each component:
 
-• Display: 16x2 LCD in 8-bit mode
+ADC Driver: Converts analog sensor data (LM35, LDR) to digital.
+GPIO Driver: Handles basic pin configurations.
+PWM Driver: Controls fan speed using Timer0.
+LCD Driver: Displays system information in 8-bit mode.
+Temperature Sensor Driver: Reads data from the LM35 sensor.
+LDR Driver: Reads light intensity data from the LDR sensor.
+LED Driver: Controls the LEDs based on light intensity.
+DC Motor Driver: Controls the motor speed using PWM.
+Flame Sensor Driver: Detects fire and triggers alerts.
+Buzzer Driver: Sounds the alarm when a fire is detected.
+Circuit Schematic
+(Insert the circuit schematic here if available)
 
-• Motor Control: H-Bridge connected for motor speed control.
+Getting Started
+Clone the repository:
 
-• LEDs
+bash
+Copy code
+git clone https://github.com/Medhat-Adel/Smart-Home-Automation-Project.git
+Build the project: Follow the steps to set up your development environment, load the code onto the ATmega32, and assemble the circuit according to the provided pin configuration.
 
-• Flame Sensor
+Run the system: Power on the system and monitor the automated lighting, fan control, and fire detection in real-time on the LCD.
 
-• Buzzer: Activated during fire alert.
+Project Structure
+/src: Contains the source code files for the project.
+/drivers: Contains the driver implementations for each hardware component.
+/schematic: Contains the circuit schematic and connection diagrams.
+Future Enhancements
+Add remote control features using Bluetooth or Wi-Fi modules for controlling the system wirelessly.
+Implement additional safety features like gas leak detection.
+Acknowledgments
+Special thanks to Engineer Mohamed Tarek for his incredible support and guidance throughout the development of this project.
