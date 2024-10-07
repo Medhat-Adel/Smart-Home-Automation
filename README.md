@@ -1,3 +1,4 @@
+![Smart Home - Proteus 8 Professional - Schematic Capture 10_7_2024 9_49_42 PM](https://github.com/user-attachments/assets/54ce852d-ebe4-4613-b69c-350eae7d754b)
 
 # Smart Home Automation Using ATmega32, LCD, Temperature Sensor, LDR Sensor, Flame Sensor, and Motor Control
 
