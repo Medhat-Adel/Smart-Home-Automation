@@ -83,17 +83,6 @@ The project utilizes the following drivers for each component:
 ## Circuit Schematic
 (Insert the circuit schematic here if available)
 
-## Getting Started
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/Medhat-Adel/Smart-Home-Automation-Project.git
-   ```
-
-2. **Build the project**:
-   Follow the steps to set up your development environment, load the code onto the ATmega32, and assemble the circuit according to the provided pin configuration.
-
-3. **Run the system**:
-   Power on the system and monitor the automated lighting, fan control, and fire detection in real-time on the LCD.
 
 ## Project Structure
 - **/src**: Contains the source code files for the project.
