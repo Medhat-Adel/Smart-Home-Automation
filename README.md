@@ -1,6 +1,3 @@
-Here’s a `README.md` file that you can use for your GitHub repository:
-
----
 
 # Smart Home Automation Using ATmega32, LCD, Temperature Sensor, LDR Sensor, Flame Sensor, and Motor Control
 
